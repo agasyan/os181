@@ -2,3 +2,8 @@ a01-README
 
 mengalami error yaitu "$\r" command not found
 memperbaiki dengan menginstall dos2unix (solusi sementara)
+
+
+FIX "\r" 
+find . -type f -print0 | xargs -0 dos2unix
+semua file in current directory

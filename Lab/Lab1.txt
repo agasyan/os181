@@ -1,0 +1,4 @@
+a01-README
+
+mengalami error yaitu "$\r" command not found
+memperbaiki dengan menginstall dos2unix (solusi sementara)

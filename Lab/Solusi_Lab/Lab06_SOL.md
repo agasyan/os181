@@ -85,9 +85,9 @@ void main(void) {
 ```
 
 **Output Dari File C :**
-```
-![00-show-pid.c](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/01-fork.JPG)
-```
+
+![01-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/01-fork.JPG)
+
 
 **Penjelasan Output Dari File C :**
 

@@ -42,11 +42,7 @@ void main(void) {
 
 **Output Dari File C :**
 
-*Output Penjalanan Pertama :*
->[[[ This is 00-show-pid: PID[114] PPID[17] ]]]
-
-*Output Penjalanan Kedua :*
->[[[ This is 00-show-pid: PID[115] PPID[17] ]]]
+![00-show-pid.c](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/00-out.JPG)
 
 **Penjelasan Output Dari File C :**
 
@@ -67,6 +63,19 @@ Penjelasan dari fungsi getpid() dan getppid():
        PR_SET_CHILD_SUBREAPER operation).
 
 * * *
+
+``` 
+├── dir1
+│   ├── file11.ext
+│   └── file12.ext
+├── dir2
+│   ├── file21.ext
+│   ├── file22.ext
+│   └── file23.ext
+├── dir3
+├── file_in_root.ext
+└── README.md
+```
 
 ### 01-fork.c
 

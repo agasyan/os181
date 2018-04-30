@@ -107,16 +107,9 @@ Penggambaran fork():
 ```
 
 Pada Output Line pertama akan mencetak printf pertama sebagai
- penanda dia sebagai parent, lalu pid [123] akan membuat child yang 
- mempunyai pid [124] akibat dari pemanggilan fungsi fork() dan pid 
- [124] akan lanjut ke - else dan pid 124 akan stop ketika selesai 
- ditunjukkan dengan output line ke-3. pid [123] akan menunggu
- pid[124] selesai dikarenakan setelah membuat Child ia akan menunggu
- yang ditunjukan dengan pemanggilan sleep(1) yang akan membuat 
- pid 123 berhenti selama 1 detik, dimana dalam 1 detik tersebut 
- pid[124] telah selesai menjalankan semua line program. setelah
- menunggu 1 detik maka pid [123] akan menyelsaikan penjalanan semua
- line program.
+ penanda dia sebagai parent, lalu pid [23] akan membuat child yang 
+ mempunyai pid [24] akibat dari pemanggilan fungsi fork() dan pid 
+ [23] dan [24] akan lanjut ke line selanjutnya dimana pid [23] akan berhenti akibat pemanggilan fungsi sleep(1) dan pid[24] akan masuk ke - else dan pid 24 akan melanjutkan semua sampai semua program selesai dan setelah pid[24] selesai pid[23] melanjutkannya karena dalam waktu 1 detik pid [24] sudah selesai mengerjakan semua perintahnya
 
 _Penjelasan fungsi fork():_
 > fork() berfungsi untuk membuat proses baru dan me-return PID dari Child jika berhasil, dan untuk membedakan sebuah proses apakah dia parent atau child bisa menggunakan PID nya, fork() me-return 0 untuk proses baru yang dibuat dan negatif jika pemanggilan fork() gagal.

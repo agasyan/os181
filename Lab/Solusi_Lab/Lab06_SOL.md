@@ -7,7 +7,7 @@ OS181 - Operating System 2018 Term (1)
 * * * 
 START : Mon Apr 30 12:05:53 WIB 2018
 
-REV00 : Mon Apr 30 12:05:53 WIB 2018
+REV01 : Tue Mei 01 05:05:53 WIB 2018
 * * *    
 
 ### Petunjuk Umum:
@@ -59,19 +59,6 @@ Penjelasan dari fungsi getpid() dan getppid():
 
 * * *
 
-``` 
-├── dir1
-│   ├── file11.ext
-│   └── file12.ext
-├── dir2
-│   ├── file21.ext
-│   ├── file22.ext
-│   └── file23.ext
-├── dir3
-├── file_in_root.ext
-└── README.md
-```
-
 ### 01-fork.c
 
 **File C :**
@@ -99,14 +86,25 @@ void main(void) {
 
 **Output Dari File C :**
 ```
-PID[123] PPID[17] (START:PARENT)
-PID[124] PPID[123] (ELSE:CHILD)
-PID[124] PPID[123] (STOP:CHILD)
-PID[123] PPID[17] (IFF0:PARENT)
-PID[123] PPID[17] (STOP:PARENT)
+![01-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/01-fork.JPG)
 ```
 
 **Penjelasan Output Dari File C :**
+
+Penggambaran fork():
+``` 
+23 (PID)
+├── line 2 (print)
+├── line 3 (fork())
+├── line 4 (sleep(1))
+├── 24 (PID)
+│   ├── line 3(apakah dia parent? dengan mengecek return dari fork() dan ia bukan parent)
+│   ├── line 6(iAM="CHILD")
+│   ├── line 7 (print)
+|   └── line 8 (print)
+├── line 5 (print)
+└── line 8 (print)
+```
 
 Pada Output Line pertama akan mencetak printf pertama sebagai
  penanda dia sebagai parent, lalu pid [123] akan membuat child yang 
@@ -121,23 +119,7 @@ Pada Output Line pertama akan mencetak printf pertama sebagai
  line program.
 
 _Penjelasan fungsi fork():_
->System call fork() is used to create processes. It takes no
- arguments and returns a process ID. The purpose of fork() is to
-  create a new process, which becomes the child process of the 
-  caller. After a new child process is created, both processes 
-  will execute the next instruction following the fork() system
-   call. Therefore, we have to distinguish the parent from the 
-   child. This can be done by testing the returned value of fork(): 
-
->If fork() returns a negative value, the creation of a child process was unsuccessful. 
-
->fork() returns a zero to the newly created child process. 
-
->fork() returns a positive value, the process ID of the child 
-process, to the parent. The returned process ID is of type pid_t
- defined in sys/types.h. Normally, the process ID is an integer.
-  Moreover, a process can use function getpid() to retrieve the 
-  process ID assigned to this process. 
+> fork() berfungsi untuk membuat proses baru dan me-return PID dari Child jika berhasil, dan untuk membedakan sebuah proses apakah dia parent atau child bisa menggunakan PID nya, fork() me-return 0 untuk proses baru yang dibuat dan negatif jika pemanggilan fork() gagal.
 
 _Penjelasan Fungsi Sleep():_
 >sleep() causes the calling thread to sleep either until the number 

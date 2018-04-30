@@ -48,12 +48,11 @@ void main(void) {
 *Output Penjalanan Kedua :*
 >[[[ This is 00-show-pid: PID[115] PPID[17] ]]]
 
-*Output Penjalanan Ketiga :*
->[[[ This is 00-show-pid: PID[116] PPID[17] ]]]
-
 **Penjelasan Output Dari File C :**
 
 Dari penjalanan program C diketahui bahwa PPID atau biasa yang disebut __Parent PID__ akan tetap sama dalam penjalanan program tersebut berkali kali. 
+
+PID akan terus berubah di tiap penjalanan file yang sudah di - compile dan biasanya nilainya akan naik (_increment_)
 
 Penjelasan dari fungsi getpid() dan getppid():
 
@@ -176,6 +175,17 @@ void main(void) {
    printf("PID[%d] PPID[%d] (STOP:%s)\n", getpid(), getppid(), iAM);
 }
 ```
+
+**Output Dari File C :**
+```
+PID[133] PPID[17] (START:PARENT)
+PID[133] PPID[17] (IFF0:PARENT)
+PID[134] PPID[133] (ELSE:CHILD)
+PID[133] PPID[17] (STOP:PARENT)
+PID[134] PPID[1] (STOP:CHILD)
+```
+
+**Penjelasan Output Dari File C :**
 
 * * *
 

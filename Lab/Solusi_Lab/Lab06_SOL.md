@@ -126,6 +126,12 @@ _Penjelasan Fungsi Sleep():_
 of real-time seconds specified in seconds have elapsed or until a 
 signal arrives which is not ignored.
 
+>sleep() causes the calling thread to sleep either until the number 
+of real-time seconds specified in seconds have elapsed or until a 
+signal arrives which is not ignored.
+
+>sleep() membuat fungsi yang memanggil untuk sleep(berhenti) untuk beberapa detik sesuai angka yang diberikan (yang menjadi argumen) kalau disini biasanya selama 1 detik.
+
 * * *
 
 ### 02-fork.c

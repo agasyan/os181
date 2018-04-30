@@ -18,6 +18,8 @@ Sebelum melihat penjelasan sebaiknya sudah menjalankan dan mempelajari Week06 ya
 1. Sebelum meng-compile file pastikan semua file yang ingin dijalankan merupakan versi terbaru, untuk mengecek bisa gunakan perintah `git pull` atau mengecek folder extra di badak
 2. Masuk ke folder terkait dan jalankan perintah `make`
 3. Untuk melihat output program bisa menggunakan perintah `./[nama-file]`
+4. Setelah selesai untuk menghapus file yang telah di compile
+gunakan perintah `make clean`
 
 * * *
 
@@ -134,7 +136,503 @@ process, to the parent. The returned process ID is of type pid_t
   Moreover, a process can use function getpid() to retrieve the 
   process ID assigned to this process. 
 
-_Penjelasan Fungsi Sleep:_
+_Penjelasan Fungsi Sleep():_
 >sleep() causes the calling thread to sleep either until the number 
 of real-time seconds specified in seconds have elapsed or until a 
 signal arrives which is not ignored.
+
+* * *
+
+### 02-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV03 Thu Oct 26 11:27:36 WIB 2017
+ * REV01 Wed May  3 20:49:54 WIB 2017
+ * START Mon Oct 24 09:42:05 WIB 2016
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+void main(void) {
+   char *iAM="PARENT";
+  
+   printf("PID[%d] PPID[%d] (START:%s)\n", getpid(), getppid(), iAM);
+   if (fork() > 0) {
+      printf("PID[%d] PPID[%d] (IFF0:%s)\n", getpid(), getppid(), iAM);
+   } else {
+      iAM="CHILD";
+      printf("PID[%d] PPID[%d] (ELSE:%s)\n", getpid(), getppid(), iAM);
+      sleep(1);     /* LOOK THIS ************** */
+   }
+   printf("PID[%d] PPID[%d] (STOP:%s)\n", getpid(), getppid(), iAM);
+}
+```
+
+* * *
+
+### 03-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV03 Thu Oct 26 11:27:01 WIB 2017
+ * REV01 Wed May  3 20:49:54 WIB 2017
+ * START Mon Oct 24 09:42:05 WIB 2016
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+void main(void) {
+   char *iAM="PARENT";
+  
+   printf("PID[%d] PPID[%d] (START:%s)\n", getpid(), getppid(), iAM);
+   if (fork() > 0) {
+      wait(NULL);     /* LOOK THIS ************** */
+      printf("PID[%d] PPID[%d] (IFF0:%s)\n", getpid(), getppid(), iAM);
+   } else {
+      iAM="CHILD";
+      printf("PID[%d] PPID[%d] (ELSE:%s)\n", getpid(), getppid(), iAM);
+   }
+   printf("PID[%d] PPID[%d] (STOP:%s)\n", getpid(), getppid(), iAM);
+}
+```
+
+* * *
+
+### 04-sleep.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV02 Mon Oct 30 10:24:44 WIB 2017
+ * START Mon Oct 24 13:27:30 WIB 2016
+ */
+
+void main(void) {
+   int ii;
+   printf("Sleeping 3s with fflush(): ");
+   fflush(NULL);
+   for (ii=0; ii < 3; ii++) {
+      sleep(1);
+      printf("x ");
+      fflush(NULL);
+   }
+   printf("\nSleeping with no fflush(): ");
+   for (ii=0; ii < 3; ii++) {
+      sleep(1);
+      printf("x ");
+   }
+   printf("\n");
+}
+```
+
+* * *
+
+### 05-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV04 Wed Nov  1 13:31:31 WIB 2017
+ * START Mon Oct 24 09:42:05 WIB 2016
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+void main(void) {
+   printf("Start:           PID[%d] PPID[%d]\n", getpid(), getppid());
+   fflush(NULL);
+   if (fork() == 0) {
+      /* START BLOCK
+      execlp("./00-show-pid", "00-show-pid", NULL);
+         END   BLOCK */
+      printf("Child:           ");
+   } else {
+      wait(NULL);
+      printf("Parent:          ");
+   }
+   printf(        "PID[%d] PPID[%d]  <<< <<< <<<\n", getpid(), getppid());
+}
+```
+
+* * *
+
+### 06-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV05 Wed Nov  1 13:34:33 WIB 2017
+ * REV00 Mon Oct 24 10:43:00 WIB 2016
+ * START 2005
+ */
+
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+/*************************************************** main ** */
+void main(void) {
+   pid_t val1, val2, val3;
+   val3 = val2 = val1 = 1000;
+   printf("PID==%4d ==== ==== ==== ====\n", getpid());
+   fflush(NULL);
+/* ***** ***** ***** ***** START BLOCK *
+   val1 = fork();
+   wait(NULL);
+   val2 = fork();
+   wait(NULL);
+   val3 = fork();
+   wait(NULL);
+   ***** ***** ***** ***** END** BLOCK */
+   printf("VAL1=%4d VAL2=%4d VAL3=%4d\n", val1, val2, val3);
+}
+```
+
+* * *
+
+### 07-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2005-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV06 Wed Nov  1 13:35:19 WIB 2017
+ * REV02 Mon Oct 24 10:43:00 WIB 2016
+ * REV01 Sun Feb 27 08:31:46 WIB 2011
+ * START 2005
+ */
+
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#define DISPLAY1 "START * PARENT *** ** PID (%4d) ** **********\n"
+#define DISPLAY2 "RANDOM: val1(%4d) -- val2(%4d) -- val3(%4d)\n"
+/*************************************************** main ** */
+void main(void) {
+   pid_t val1, val2, val3;
+   printf(DISPLAY1, getpid());
+   val1 = fork();
+   val2 = fork();
+   val3 = fork();
+   printf(DISPLAY2, val1, val2, val3);
+/* *********** START BLOCK ***
+   wait(NULL);
+   wait(NULL);
+   wait(NULL);
+   *********** END * BLOCK *** */
+}
+```
+
+* * *
+
+### 08-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2005-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV02 Thu Oct 26 12:27:30 WIB 2017
+ * REV01 Mon Oct 24 10:43:00 WIB 2016
+ * START 2005
+ */
+
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+void main(void) {
+   int ii=0;
+   if (fork() == 0) ii++;
+   wait(NULL);
+   if (fork() == 0) ii++;
+   wait(NULL);
+   if (fork() == 0) ii++;
+   wait(NULL);
+   printf ("Result = %d \n",ii);
+   exit(0);
+}
+```
+
+* * *
+
+### 09-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2015-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * REV03 Mon Oct 30 11:04:10 WIB 2017
+ * REV00 Mon Oct 24 10:43:00 WIB 2016
+ * START 2015
+ */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+void main(void) {
+   int value;
+
+   value=fork();
+   wait(NULL);
+   printf("I am PID[%4d] -- The fork() return value is: %4d)\n", getpid(), value);
+
+   value=fork();
+   wait(NULL);
+   printf("I am PID[%4d] -- The fork() return value is: %4d)\n", getpid(), value);
+}
+```
+
+* * *
+
+### 10-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV02 Mon Oct 30 20:25:44 WIB 2017
+ * START Mon Oct 24 09:42:05 WIB 2016
+ */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+void procStatus(int level) {
+   printf("L%d: PID[%d] (PPID[%d])\n", level, getpid(), getppid());
+   fflush(NULL);
+}
+
+int addLevelAndFork(int level) {
+   if (fork() == 0) level++;
+   wait(NULL);
+   return level;
+}
+
+void main(void) {
+   int level = 0;
+   procStatus(level);
+   level = addLevelAndFork(level);
+   procStatus(level);
+}
+```
+
+* * *
+
+### 11-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV02 Mon Oct 30 20:27:24 WIB 2017
+ * START Mon Oct 24 09:42:05 WIB 2016
+ */
+
+#define  LOOP   3
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+void procStatus(int level) {
+   printf("L%d: PID[%d] (PPID[%d])\n", level, getpid(), getppid());
+   fflush(NULL);
+}
+
+int addLevelAndFork(int level) {
+   if (fork() == 0) level++;
+   wait(NULL);
+   return level;
+}
+
+void main(void) {
+   int ii, level = 0;
+   procStatus(level);
+   for (ii=0;ii<LOOP;ii++) {
+      level = addLevelAndFork(level);
+      procStatus(level);
+   }
+}
+```
+
+* * *
+
+### 12-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2017 Rahmat M. Samik-Ibrahim -- This is free software
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * Adapted from University of Waterloo Midterm Winter 2012.
+ * REV03 Wed Nov  1 13:32:11 WIB 2017
+ * START Wed May  3 20:56:05 WIB 2017
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+void waitAndPrintPID(void) {
+   wait(NULL);
+   printf("PID: %d\n", getpid());
+   fflush(NULL);
+}
+
+void main(int argc, char *argv[]) {
+   int rc, status;
+
+   waitAndPrintPID();
+   rc = fork();
+   waitAndPrintPID();
+   if (rc == 0) {
+      fork();
+      waitAndPrintPID();
+      execlp("./00-show-pid", "00-show-pid", NULL);
+   }
+   waitAndPrintPID();
+}
+```
+
+* * *
+
+### 14-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2005-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV03 Mon Oct 30 15:10:10 WIB 2017
+ * REV00 Wed May  3 17:07:09 WIB 2017
+ *
+ * fflush(NULL): flushes all open output streams
+ * fork():       creates  a new process by cloning
+ * getpid():     get PID (Process ID)
+ * wait(NULL):   wait until the child is terminated
+ *
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+void main(void) {
+   int firstPID = (int) getpid();
+   int   RelPID;
+
+   fork();
+   wait(NULL);
+   fork();
+   wait(NULL);
+   fork();
+   wait(NULL);
+
+   RelPID=(int)getpid()-firstPID+1000;
+   printf("RelPID: %d\n", RelPID);
+   fflush(NULL);
+}
+```
+
+* * *
+
+### 15-fork.c
+
+**File C :**
+
+```  C
+/*
+ * (c) 2016-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV03 Wed Nov  1 14:00:40 WIB 2017
+ * START Sun Dec 04 00:00:00 WIB 2016
+ * wait()     =  suspends until its child terminates. 
+ * fflush()   =  flushes the user-space buffers.
+ * getppid()  =  get parent PID
+ * ASSUME pid >= 1000 && pid > ppid **
+ */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#define  NN 2
+
+void main (void) {
+   int ii, rPID, rPPID, id1000=getpid();
+   for (ii=1; ii<=NN; ii++) {
+      fork();
+      wait(NULL);
+      rPID = getpid()-id1000+1000; /* "relative" */
+      rPPID=getppid()-id1000+1000; /* "relative" */
+      if (rPPID < 1000 || rPPID > rPID) rPPID=999;
+      printf("Loop [%d] - rPID[%d] - rPPID[%4d]\n", ii, rPID, rPPID);
+      fflush(NULL);
+   }
+}
+```
+
+
+

@@ -52,15 +52,10 @@ PID akan terus berubah di tiap penjalanan file yang sudah di - compile dan biasa
 
 Penjelasan dari fungsi getpid() dan getppid():
 
->getpid() returns the process ID (PID) of the calling process.  (This
-       is often used by routines that generate unique temporary filenames.)
+>getpid() memberikan output berupa PID dari proses yang memanggil fungsi tersebut yang biasa digunakan oleh proses yang PID sering berubah ubah karena itu akibat dari random maupun untuk mengetahui apakah yang jalan adalah anak atau bukan akibat pemanggilan fork()
 
->getppid() returns the process ID of the parent of the calling
-       process.  This will be either the ID of the process that created this
-       process using fork(), or, if that process has already terminated, the
-       ID of the process to which this process has been reparented (either
-       init(1) or a "subreaper" process defined via the prctl(2)
-       PR_SET_CHILD_SUBREAPER operation).
+       
+>getppid() memberikan output berupa PID dari parent yang memanggil fungsi ini. Biasanya merupakan PID dari proses yang memanggil fork() karena proses yang sedang berjalan merupakan anak dari proses tersebut.
 
 * * *
 

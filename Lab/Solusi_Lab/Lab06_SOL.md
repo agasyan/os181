@@ -6,9 +6,9 @@ OS181 - Operating System 2018 Term (1)
 START : Mon Apr 30 12:05:53 WIB 2018
 
 REV00 : Mon Apr 30 12:05:53 WIB 2018
-* * *
+* * *   
 
-## Petunjuk Umum:
+### Petunjuk Umum:
 
 Sebelum melihat penjelasan sebaiknya sudah menjalankan dan mempelajari Week06 yang ada pada [link](https://github.com/UI-FASILKOM-OS/os181/tree/master/demos) berikut. Baik di komputer pribadi maupun di server kawung.
 
@@ -20,7 +20,6 @@ Sebelum melihat penjelasan sebaiknya sudah menjalankan dan mempelajari Week06 ya
 * * *
 ## Penjelasan Mengenai File - file yang ada pada week06
 
-* * *
 
 ### 00-show-pid.c
 

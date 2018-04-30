@@ -115,13 +115,6 @@ _Penjelasan fungsi fork():_
 > fork() berfungsi untuk membuat proses baru dan me-return PID dari Child jika berhasil, dan untuk membedakan sebuah proses apakah dia parent atau child bisa menggunakan PID nya, fork() me-return 0 untuk proses baru yang dibuat dan negatif jika pemanggilan fork() gagal.
 
 _Penjelasan Fungsi Sleep():_
->sleep() causes the calling thread to sleep either until the number 
-of real-time seconds specified in seconds have elapsed or until a 
-signal arrives which is not ignored.
-
->sleep() causes the calling thread to sleep either until the number 
-of real-time seconds specified in seconds have elapsed or until a 
-signal arrives which is not ignored.
 
 >sleep() membuat fungsi yang memanggil untuk sleep(berhenti) untuk beberapa detik sesuai angka yang diberikan (yang menjadi argumen) kalau disini biasanya selama 1 detik.
 

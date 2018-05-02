@@ -343,7 +343,6 @@ Penggambaran fork():
 
 Jika ada parent dan child yang berjalan maka parent berjalan lebih dulu dibanding childnya tetapi keduanya berjalan _line by line_. ketika parent _Wait(NULL)_ maka parent akan menunggu semua child process yang berada di bawahnya walaupun itu anaknya dari child process akan menunggu semua sampai selesai baru berjalan lagi programnya setelah Line dari _wait(NULL)_.
 
-
 * * *
 
 ### 06-fork.c

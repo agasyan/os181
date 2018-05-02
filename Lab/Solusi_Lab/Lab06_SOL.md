@@ -95,16 +95,16 @@ Penggambaran fork():
 
 ``` bash
 106 (PID)
-├── line 2 (print)
+├── line 2 (print-1)
 ├── line 3 (fork())
 ├── line 4 (sleep(1))
 ├── 107 (PID)
 │   ├── line 3(apakah dia parent? dengan mengecek return dari fork() lalu masuk else)
 │   ├── line 6(iAM="CHILD")
-│   ├── line 7 (print)
-|   └── line 8 (print)
-├── line 5 (print)
-└── line 8 (print)
+│   ├── line 7 (print-2)
+|   └── line 8 (print-3)
+├── line 5 (print-4)
+└── line 8 (print-5)
 ```
 
 Pada Output Line pertama akan mencetak printf pertama sebagai
@@ -165,16 +165,16 @@ Penggambaran fork():
 
 ``` bash
 108 (PID)
-├── line 2 (print)
-├── line 4 (print)
+├── line 2 (print-1)
+├── line 4 (print-2)
 ├── 109 (PID)
 │   ├── line 3(apakah dia parent? dengan mengecek return dari fork() lalu masuk else)
 │   ├── line 6(iAM="CHILD")
-│   ├── line 7 (print)
+│   ├── line 7 (print-3)
 |   └── line 8 (sleep)
-├── line 10(print)
+├── line 10(print-4)
 └── 109 (PID(child dari 108))
-    └──line 10 (print) (setelah melakukan sleep)
+    └──line 10 (print-5) (setelah melakukan sleep)
 ```
 
 Disini Parent Process memiliki PID [108] dan pada line ke - 3 saat menjalankan _if-clause_ membandingkannya dengan return nilai dari pemanggilan fungsi fork() yang membuat PID [108] membuat child process yang memiliki PID [109] dimana akan berjalan satu satu tergantung lines dimulai dari parent dan pada line ke 8 ada perintah berupa sleep dimana proses child akan berhenti dan parent akan print line ke - 10 dan tak lama kemudian PID[109] yaitu child dari PID[108] akan mencetak _output_ juga.
@@ -202,7 +202,7 @@ Disini Parent Process memiliki PID [108] dan pada line ke - 3 saat menjalankan _
 
 void main(void) {
    char *iAM="PARENT";
-  
+
    printf("PID[%d] PPID[%d] (START:%s)\n", getpid(), getppid(), iAM);
    if (fork() > 0) {
       wait(NULL);     /* LOOK THIS ************** */
@@ -218,6 +218,26 @@ void main(void) {
 **Output Dari File C :**
 
 ![03-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/03-fork.JPG)
+
+**Penjelasan Output Dari File C :**
+
+Penggambaran fork():
+
+``` bash
+110 (PID)
+├── line 2 (print-1)
+├── line 3 (pengecekan retun nilai fork())
+├── line 4 (wait(NULL))
+├── 111 (PID)
+│   ├── line 3(apakah dia parent? dengan mengecek return dari fork() lalu masuk else)
+│   ├── line 7(iAM="CHILD")
+│   ├── line 8 (print-2)
+|   └── line 10 (print-3)
+├── line 5(print-4)
+└── line 10 (print-5)
+```
+
+Hampir sama seperti perintah sleep adalah command wait(NULL) dimana Proses [110] akan berhenti sampai semua child proses selesai menjalankan program C (sampai line terakhir) dan baru parent akan jalan jika semua child sudah selesai menjalankan semua perintah sampai akhir.
 
 * * *
 
@@ -257,6 +277,8 @@ void main(void) {
 ![04-sleep](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/04-sleep.JPG)
 
 * * *
+
+**Penjelasan fflush():**
 
 ### 05-fork.c
 

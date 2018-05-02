@@ -155,13 +155,8 @@ void main(void) {
 ```
 
 **Output Dari File C :**
-```
-PID[133] PPID[17] (START:PARENT)
-PID[133] PPID[17] (IFF0:PARENT)
-PID[134] PPID[133] (ELSE:CHILD)
-PID[133] PPID[17] (STOP:PARENT)
-PID[134] PPID[1] (STOP:CHILD)
-```
+
+![02-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/02-fork.JPG)
 
 **Penjelasan Output Dari File C :**
 
@@ -201,6 +196,10 @@ void main(void) {
 }
 ```
 
+**Output Dari File C :**
+
+![03-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/03-fork.JPG)
+
 * * *
 
 ### 04-sleep.c
@@ -233,6 +232,10 @@ void main(void) {
    printf("\n");
 }
 ```
+
+**Output Dari File C :**
+
+![04-sleep](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/04-sleep.JPG)
 
 * * *
 
@@ -269,6 +272,10 @@ void main(void) {
    printf(        "PID[%d] PPID[%d]  <<< <<< <<<\n", getpid(), getppid());
 }
 ```
+
+**Output Dari File C :**
+
+![05-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/05-fork.JPG)
 
 * * *
 
@@ -308,6 +315,10 @@ void main(void) {
    printf("VAL1=%4d VAL2=%4d VAL3=%4d\n", val1, val2, val3);
 }
 ```
+
+**Output Dari File C :**
+
+![06-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/06-fork.JPG)
 
 * * *
 
@@ -349,6 +360,10 @@ void main(void) {
 }
 ```
 
+**Output Dari File C :**
+
+![07-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/07-fork.JPG)
+
 * * *
 
 ### 08-fork.c
@@ -383,6 +398,10 @@ void main(void) {
 }
 ```
 
+**Output Dari File C :**
+
+![08-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/09-fork.JPG)
+
 * * *
 
 ### 09-fork.c
@@ -415,6 +434,10 @@ void main(void) {
    printf("I am PID[%4d] -- The fork() return value is: %4d)\n", getpid(), value);
 }
 ```
+
+**Output Dari File C :**
+
+![09-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/09-fork.JPG)
 
 * * *
 
@@ -454,6 +477,10 @@ void main(void) {
    procStatus(level);
 }
 ```
+
+**Output Dari File C :**
+
+![10-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/10-fork.JPG)
 
 * * *
 
@@ -497,6 +524,10 @@ void main(void) {
 }
 ```
 
+**Output Dari File C :**
+
+![11-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/11-fork.JPG)
+
 * * *
 
 ### 12-fork.c
@@ -538,6 +569,10 @@ void main(int argc, char *argv[]) {
    waitAndPrintPID();
 }
 ```
+
+**Output Dari File C :**
+
+![12-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/12-fork.JPG)
 
 * * *
 
@@ -583,6 +618,10 @@ void main(void) {
 }
 ```
 
+**Output Dari File C :**
+
+![14-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/14-fork.JPG)
+
 * * *
 
 ### 15-fork.c
@@ -622,5 +661,6 @@ void main (void) {
 }
 ```
 
+**Output Dari File C :**
 
-
+![15-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/15-fork.JPG)

@@ -99,7 +99,7 @@ Penggambaran fork():
 ├── line 3 (fork())
 ├── line 4 (sleep(1))
 ├── 107 (PID)
-│   ├── line 3(apakah dia parent? dengan mengecek return dari fork()
+│   ├── line 3(apakah dia parent? dengan mengecek return dari fork() lalu masuk else)
 │   ├── line 6(iAM="CHILD")
 │   ├── line 7 (print)
 |   └── line 8 (print)
@@ -160,6 +160,24 @@ void main(void) {
 ![02-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/02-fork.JPG)
 
 **Penjelasan Output Dari File C :**
+
+Penggambaran fork():
+
+``` bash
+108 (PID)
+├── line 2 (print)
+├── line 4 (print)
+├── 109 (PID)
+│   ├── line 3(apakah dia parent? dengan mengecek return dari fork() lalu masuk else)
+│   ├── line 6(iAM="CHILD")
+│   ├── line 7 (print)
+|   └── line 8 (sleep)
+├── line 10(print)
+└── 109 (PID(child dari 108))
+    └──line 10 (print) (setelah melakukan sleep)
+```
+
+Disini Parent Process memiliki PID [108] dan pada line ke - 3 saat menjalankan _if-clause_ membandingkannya dengan return nilai dari pemanggilan fungsi fork() yang membuat PID [108] membuat child process yang memiliki PID [109] dimana akan berjalan satu satu tergantung lines dimulai dari parent dan pada line ke 8 ada perintah berupa sleep dimana proses child akan berhenti dan parent akan print line ke - 10 dan tak lama kemudian PID[109] yaitu child dari PID[108] akan mencetak _output_ juga.
 
 * * *
 

@@ -2,29 +2,33 @@
 
 [Link Solusi Week06](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/Lab06_SOL.md)
 
-OS181 - Operating System 2018 Term (1) 
+OS181 - Operating System 2018 Term (1)
 
-* * * 
+* * *
+
 START : Mon Apr 30 12:05:53 WIB 2018
 
-REV01 : Tue Mei 01 05:05:53 WIB 2018
-* * *    
+REV01 : Tue Mei 01 05:30:02 WIB 2018
+REV02 : Wed Mei 02 19:35:47 WIB 2018
 
-### Petunjuk Umum:
+* * *
+
+## Petunjuk Umum
 
 Sebelum melihat penjelasan sebaiknya sudah menjalankan dan mempelajari Week06 yang ada pada [link](https://github.com/UI-FASILKOM-OS/os181/tree/master/demos) berikut. Baik di komputer pribadi maupun di server kawung.
 
 **Penjalanan Dari File C yang ada pada Week terkait :**
+
 1. Sebelum meng-compile file pastikan semua file yang ingin dijalankan merupakan versi terbaru, untuk mengecek bisa gunakan perintah `git pull` atau mengecek folder extra di badak
 2. Masuk ke folder terkait dan jalankan perintah `make`
 3. Untuk melihat output program bisa menggunakan perintah `./[nama-file]`
 4. Setelah selesai untuk menghapus file yang telah di compile
+
 gunakan perintah `make clean`
 
 * * *
 
 ## Penjelasan Mengenai File - file yang ada pada week06
-
 
 ### 00-show-pid.c
 
@@ -36,7 +40,7 @@ gunakan perintah `make clean`
 #include <sys/types.h>
 
 void main(void) {
-	printf(" [[[ This is 00-show-pid: PID[%d] PPID[%d] ]]]\n", getpid(), getppid());
+    printf(" [[[ This is 00-show-pid: PID[%d] PPID[%d] ]]]\n", getpid(), getppid());
 }
 ```
 
@@ -52,10 +56,7 @@ PID akan terus berubah di tiap penjalanan file yang sudah di - compile dan biasa
 
 Penjelasan dari fungsi getpid() dan getppid():
 
->getpid() memberikan output berupa PID dari proses yang memanggil fungsi tersebut yang biasa digunakan oleh proses yang PID sering berubah ubah karena itu akibat dari random maupun untuk mengetahui apakah yang jalan adalah anak atau bukan akibat pemanggilan fork()
-
-       
->getppid() memberikan output berupa PID dari parent yang memanggil fungsi ini. Biasanya merupakan PID dari proses yang memanggil fork() karena proses yang sedang berjalan merupakan anak dari proses tersebut.
+>getpid() memberikan output berupa PID dari proses yang memanggil fungsi tersebut yang biasa digunakan oleh proses yang PID sering berubah ubah karena itu akibat dari random maupun untuk mengetahui apakah yang jalan adalah anak atau bukan akibat pemanggilan fork()memberikan output berupa PID dari parent yang memanggil fungsi ini. Biasanya merupakan PID dari proses yang memanggil fork() karena proses yang sedang berjalan merupakan anak dari proses tersebut.
 
 * * *
 
@@ -88,17 +89,17 @@ void main(void) {
 
 ![01-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/01-fork.JPG)
 
-
 **Penjelasan Output Dari File C :**
 
 Penggambaran fork():
-``` 
-23 (PID)
+
+``` bash
+106 (PID)
 ├── line 2 (print)
 ├── line 3 (fork())
 ├── line 4 (sleep(1))
-├── 24 (PID)
-│   ├── line 3(apakah dia parent? dengan mengecek return dari fork() dan ia bukan parent)
+├── 107 (PID)
+│   ├── line 3(apakah dia parent? dengan mengecek return dari fork()
 │   ├── line 6(iAM="CHILD")
 │   ├── line 7 (print)
 |   └── line 8 (print)
@@ -107,9 +108,9 @@ Penggambaran fork():
 ```
 
 Pada Output Line pertama akan mencetak printf pertama sebagai
- penanda dia sebagai parent, lalu pid [23] akan membuat child yang 
- mempunyai pid [24] akibat dari pemanggilan fungsi fork() dan pid 
- [23] dan [24] akan lanjut ke line selanjutnya dimana pid [23] akan berhenti akibat pemanggilan fungsi sleep(1) dan pid[24] akan masuk ke - else dan pid 24 akan melanjutkan semua sampai semua program selesai dan setelah pid[24] selesai pid[23] melanjutkannya karena dalam waktu 1 detik pid [24] sudah selesai mengerjakan semua perintahnya
+ penanda dia sebagai parent, lalu pid [106] akan membuat child yang
+ mempunyai pid [107] akibat dari pemanggilan fungsi fork() dan pid
+ [106] dan [107] akan lanjut ke line selanjutnya dimana dicek apakah dia merupakan parent process atau child process dan pid [106] akan berhenti akibat pemanggilan fungsi sleep(1) dan pid[107] akan masuk ke - else dan pid [107] akan melanjutkan semua sampai semua program selesai dan setelah pid[107] selesai pid[106] melanjutkannya karena dalam waktu 1 detik pid [107] sudah selesai mengerjakan _lines of code_ yang perlu dilakukan.
 
 _Penjelasan fungsi fork():_
 > fork() berfungsi untuk membuat proses baru dan me-return PID dari Child jika berhasil, dan untuk membedakan sebuah proses apakah dia parent atau child bisa menggunakan PID nya, fork() me-return 0 untuk proses baru yang dibuat dan negatif jika pemanggilan fork() gagal.

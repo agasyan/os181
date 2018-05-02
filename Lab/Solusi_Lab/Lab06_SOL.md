@@ -9,7 +9,7 @@ OS181 - Operating System 2018 Term (1)
 START : Mon Apr 30 12:05:53 WIB 2018
 
 REV01 : Tue Mei 01 05:30:02 WIB 2018
-REV02 : Wed Mei 02 19:35:47 WIB 2018
+REV02 : Wed Mei 02 20:49:09 WIB 2018
 
 * * *
 
@@ -360,10 +360,7 @@ Jika ada parent dan child yang berjalan maka parent berjalan lebih dulu dibandin
  */
 
 #include <sys/types.h>
-#include <sys/wait.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <sys/wait.h> 
 /*************************************************** main ** */
 void main(void) {
    pid_t val1, val2, val3;
@@ -385,6 +382,10 @@ void main(void) {
 **Output Dari File C :**
 
 ![06-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/06-fork.JPG)
+
+**Penjelasan Output Dari File C :**
+
+Pada 06-fork nilai val1,val2, dan val3 akan sama coba hapus start block dan end block untuk melihat perbedaan output dari yang ada diatas.
 
 * * *
 
@@ -574,7 +575,7 @@ void procStatus(int level) {
    fflush(NULL);
 }
 
-int addLevelAndFork(int level) {
+int addLevelAndFo rk(int level) {
    if (fork() == 0) level++;
    wait(NULL);
    return level;

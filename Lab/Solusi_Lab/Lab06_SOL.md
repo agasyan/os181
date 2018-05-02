@@ -276,9 +276,14 @@ void main(void) {
 
 ![04-sleep](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/04-sleep.JPG)
 
-* * *
+**Penjelasan Output Dari File C :**
 
-**Penjelasan fflush():**
+Karena data tidak dipindahkan ke console maka perintah sleep hanya dijalankan satu kali karena data yang perlu dijalankan masih berada di buffer atau karena buffer tidak dibersihkan pada _looping_ yang kedua, dengan menggunakan perintah fflush. Untuk lebih jelasnya bisa dilihat bagaimana program `04-sleep` bekerja.
+
+_Penjelasan fflush():_
+>fflush() biasanya digunakan hanya untuk output stream. Fungsi dari fflush adalah membersihkan buffer output dan pinda data yang sedang di buffer ke console atau ke disk.
+
+* * *
 
 ### 05-fork.c
 

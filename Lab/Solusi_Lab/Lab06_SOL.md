@@ -323,6 +323,27 @@ void main(void) {
 
 ![05-fork](https://github.com/agasyan/os181/blob/master/Lab/Solusi_Lab/src/images/w06/05-fork.JPG)
 
+**Penjelasan Output Dari File C :**
+
+Penggambaran fork():
+
+``` bash
+113 (PID)
+├── line 1 (print-1)
+├── line 2 (fflush(NULL))
+├── line 3 (if-clause fork() mengakibatkan dibuatnya child dan
+            pengecekan nilai return dari pemanggilan fork())
+├── line 9(Wait(NULL))
+├── 114 (PID)
+│   ├── line 7(print "Child: ")
+│   └── line 12(print lanjutan dari Child yang berupa PID dan PPID)
+├── line 10 (print "Parent :")
+└── line 12(print lanjutan dari Parent yang berupa PID dan PPID)
+```
+
+Jika ada parent dan child yang berjalan maka parent berjalan lebih dulu dibanding childnya tetapi keduanya berjalan _line by line_. ketika parent _Wait(NULL)_ maka parent akan menunggu semua child process yang berada di bawahnya walaupun itu anaknya dari child process akan menunggu semua sampai selesai baru berjalan lagi programnya setelah Line dari _wait(NULL)_.
+
+
 * * *
 
 ### 06-fork.c

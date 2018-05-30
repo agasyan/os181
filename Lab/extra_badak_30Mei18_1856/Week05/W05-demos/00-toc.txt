@@ -1,0 +1,19 @@
+REV01 Mon Mar 12 19:59:22 WIB 2018
+START Mon Oct  3 11:47:46 WIB 2016
+(c) 2016 Rahmat M. Samik-Ibrahim -- This is a free document.
+============================================================
+
+* Login to "badak.cs.ui.ac.id" with your SSO account.
+* Learn (man, google, etc) how to use the command "top".
+* (If exists) delete OR rename file ~/.toprc
+* See picture 01-top.jpg, 02-top.jpg, 03-top.jpg, 04-top.jpg, 05-top.jpg
+* Run "top" on badak:
+** Hit "h" for HELP.
+** Hit "f" for Field Management: SPACE=ON/OFF; Right Arrow: Set Move
+** Hit "w" to write a new "~/.toprc" file
+* Arrange "top" until it display only:
+  PID, VIRT, RES, SHR, SWAP, CODE, DATA, USED, nDRT.
+* Do not forget to save the configuration by using "W" into "~/.toprc"
+* Make program 06-memory 
+* Run program 06-memory > 07-result.txt
+

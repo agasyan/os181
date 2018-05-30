@@ -1,0 +1,91 @@
+#!/bin/bash
+# REV12: Thu Feb 22 09:32:16 WIB 2018
+# REV01: Mon Jun 26 21:48:52 WIB 2017
+# START: Mon Feb 13 20:22:22 WIB 2017
+
+# R: This script is sorting files and preparing the demo.
+#    Just run "bash a1-sort-n-prepare"
+
+# Copyright (C) 2017-2018 http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+PREFIX="^#.R:"
+RESULT=`grep $PREFIX $0`
+clear
+if [[ $RESULT ]] ; then
+   printf "\n[%11s]: %s\n" "`cut -c 1-11 <<< $0`" "$RESULT"
+fi
+echo ""
+echo "================================================="
+echo "Just run this script:"
+echo "bash $0"
+echo "================================================="
+
+HEAD="a" 
+TMPHEAD="ZTMP"
+START="0"
+TMPSEQ="1000"
+DEL="xx"
+
+# check is "aXX-XXXXX" files exist.
+for FF in ${HEAD}* ; do
+   [ -e $FF ] && {
+      NFILES=`ls ${HEAD}* | wc -l`
+      FORMAT="%${#NFILES}.${#NFILES}d"
+   } || { 
+      echo "No $FF"
+      exit
+   }
+done
+
+# temporary rename "aXX-YYYYY" to "ZTMPXX-YYYYY"
+SEQ=$TMPSEQ
+for FF in ${HEAD}* ; do
+   ((SEQ++))
+   TMPNAME=`echo $FF | cut -d"-" -f2-`
+   TMPNAME=`printf "${TMPHEAD}${FORMAT}-$TMPNAME" $SEQ`
+   [[ $FF != $TMPNAME ]] && /bin/mv $FF $TMPNAME 
+done
+
+# rearrange back from "ZTMPXX-YYYYY" to "aXX-YYYYY".
+SEQ=$START
+for FF in ${TMPHEAD}* ; do
+   ((SEQ++))
+   NEWNAME=`echo $FF | cut -d"-" -f2-`
+   NEWNAME=`printf "${HEAD}${FORMAT}-${NEWNAME}" $SEQ`
+   [[ $FF != $NEWNAME ]] && /bin/mv $FF $NEWNAME 
+   chmod 755 $NEWNAME
+done
+chmod 644 ${HEAD}*
+
+cat -  << NNNN
+01 START START START START START START START START START START START START START
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+         10        20        30        40        50        60        70       79
+
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+
+         10        20        30        40        50        60        70       79
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+09 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+XXXXX                           TEST FOR 80 x 23                           XXXXX
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+         10        20        30        40        50        60        70       79
+
+         10        20        30        40        50        60        70       79
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+19 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+         10        20        30        40        50        60        70       79
+12345678911234567892123456789312345678941234567895123456789612345678971234567898
+23 END END END END  END END END END  END END END END END END END END END END END
+NNNN
+# ###############################################################
+
+exit 0
+

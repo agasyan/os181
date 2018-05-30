@@ -1,0 +1,41 @@
+exit 1
+This demo is available in badak:///extra/.
+See also: https://github.com/UI-FASILKOM-OS/os181.
+You should copy this folder to your own working folder.
+DO NOT work inside the /extra folder!
+=======================================================
+
+Folder Name:
+Week07/
+
+To copy the folder to your home directory:
+cp -r /extra/Week07/W07-demos/ W07-demos/
+=======================================================
+
+File Listing:
+* 1-READ-THIS-FIRST.txt (this file)
+* Makefile (a make file)
+* C files:
+00-thread.c 01-thread.c 02-prodkon.c 03-readwrite.c
+04-readwrite.c 05-alu.c 06-balap.c 07-sudokuSV.c
+08-mainDadu.c 09-rpsls.c 10-kirikanan.c 11-thread.c
+12-multi-thread.c 13-mini-sudoku-4x4.c
+* Data Files:
+13-1-data-sudoku.txt 13-2-data-sudoku.txt 13-3-data-sudoku.txt 13-4-data-sudoku.txt
+* MYUTILS:
+99-myutils.h 99-myutils.c 
+
+=======================================================
+To list files, run:  ls -al
+To compile the “.c” files, run make
+
+===================================
+REV01: Tue Apr 17 09:19:27 WIB 2018
+START: Wed Apr 11 19:05:37 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

@@ -1,0 +1,37 @@
+exit 1
+This demo is available in badak:///extra/.
+See also: https://github.com/UI-FASILKOM-OS/os181.
+You should copy this folder to your own working folder.
+DO NOT work inside the /extra folder!
+=======================================================
+
+Folder Name:
+Week10/
+
+To copy the folder to your home directory:
+cp -r /extra/Week10/W10-demos/ W10-demos/
+=======================================================
+
+File Listing:
+* 1-READ-THIS-FIRST.txt (this file)
+* Makefile (a make file)
+* C files:
+00-server.c 01-client.c 02-clisvr.c
+50-get-put.c 51-get-put-loop.c 52-open-close.c 53-file-pointer.c
+54-write.c 55-write.c 56-copy.c 57-dup.c 58-dup2.c 59-io.c
+60-readwrite.c 61-os172.c
+
+=======================================================
+To list files, run:  ls -al
+To compile the “.c” files, run make
+
+===================================
+REV00: Wed Apr 18 13:32:21 WIB 2018
+START: Wed Apr 18 13:32:21 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

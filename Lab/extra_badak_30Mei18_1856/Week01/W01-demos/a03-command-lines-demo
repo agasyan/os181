@@ -1,0 +1,76 @@
+#!/bin/bash
+# REV10: Tue Feb 27 09:22:52 WIB 2018
+# START: Mon Sep  5 11:12:35 WIB 2016
+
+# R: These are collections of command lines. Run "bash a03-command-lines-demo 11 22 33 44 55"
+
+# These are some command lines 
+# Copyright (C) 2016-2018 http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+XX="xx"
+TMPFILE="ZA-thisfile.tx"
+TESTDIR1="ZB-SOURCE"
+TESTDIR2="ZC-BACKUP"
+
+[ -d $TESTDIR1 ] && [ -d $TESTDIR2 ] && [ -f $TMPFILE ] || {
+   echo ""; echo "No $TESTDIR1 or $TESTDIR2 or $TMPFILE."
+   echo "Please run script \"a02-sort-n-prepare\" first!"; echo ""
+   exit
+}
+
+echo ""; echo "These are collections of command lines."
+echo "Just run: \"bash $0 11 22 33 44 55\""
+echo ""; echo "*** Hit Enter Key ***";
+[ "$1" = "$XX" ] || (read YY ; clear)
+
+for II in      \
+   'ls'        \
+   'ls -a'     \
+   'ls -aF'    \
+   'ls -al | head -8 ; echo "(...)"; ls -al | tail -8'             \
+   'ls -a '"$TESTDIR1"' ; echo ":::::::::" ; ls -aF '"$TESTDIR1"   \
+   'cat   '"$TESTDIR1"'/program2.c'                                \
+   'cd    '"$TESTDIR1"' ; cat file1.txt ; echo "::::" ; cat file2.txt ; cd ..' \
+   'cd    '"$TESTDIR1"' ; diff file1.txt file2.txt ; cd ..' \
+   'cd    '"$TESTDIR1"' ; sort file1.txt ; cd ..' \
+   'pushd '"$TESTDIR1"' ; wc file1.txt ; wc -l file1.txt ; wc -c file1.txt;popd'\
+   'date'     \
+   'date +%y' \
+   'date +%Y' \
+   'date +%d\ %b\ %Y\ at\ %H:%M:%S;echo "::::";date "+%d %b %Y at %H:%M:%S"' \
+   'top -b -n 1 | head -15' \
+   'top -b -n 1 | head -9; echo "... etc ..."; top -b -n 1 | tail -7' \
+   'find . -type d -exec "echo" "{}" ";";echo ":::"; find . -type d -print' \
+   'MYVAR="This is MYVAR string"; echo $MYVAR; echo "$MYVAR"; echo \$MYVAR;echo '"'"'$MYVAR'"'"'' \
+   'printf "PATH=[%s]\nHOME=[%s]\nSHELL=[%s]\n" $PATH $HOME $SHELL' \
+   'printf "PID=[%s] --- NARG=[%s] --- ARG0=[%s]\n" $$ $# $0' \
+   'printf "ARG1=[%s]-- ARG2=[%s] -- ARG3=[%s] -- ARG4=[%s]\n" $1 $2 $3 $4'\
+   'function dummy { printf "BASH PID = %s\n" $$ ; return 99 ; } ; ' \
+   'dummy ; printf "Return value = %s\n" $? ' \
+   'function doawk { awk -f '"$TESTDIR1"'/file.awk /etc/passwd ; } ; ' \
+   'doawk | head -6 ; echo "(...)" ; doawk | tail -6 ; ' \
+   '/bin/bash --version' \
+   'URL="https://raw.githubusercontent.com/rms46/os181/master/README.md"; echo $URL' \
+   'curl -s $URL ; echo "============" ; curl -s $URL | grep "^ZCZC W01"
+
+' \
+   'time (echo -n "DELAY 3 seconds..";sleep 1;echo -n "..";sleep 1;echo -n "..";sleep 1;echo ".. DONE")' \
+
+do
+    COMMENT="RUNNING:  $II"
+    SIZE=${#COMMENT}
+    (( $SIZE > 80 )) && SIZE=80
+    STR=$(eval printf "%0.s=" {1..$SIZE})
+    echo "$STR"
+    echo $COMMENT
+    echo "$STR"
+    eval $II
+    echo ""; echo "*** Hit Enter Key ***";
+    [ "$1" = "$XX" ] || (read YY ; clear)
+done
+
+exit
+

@@ -1,0 +1,46 @@
+exit
+This demo is available in badak:///extra/.
+See also: https://github.com/UI-FASILKOM-OS/os181.
+You should copy this folder to your own working folder.
+DO NOT work inside this folder!
+=======================================================
+
+Folder Name:
+Week01/
+
+To copy the folder to your home directory:
+cp -r /extra/Week01/W01-demos/ W01-demos/
+=======================================================
+
+File Listing:
+* 1-READ-THIS-FIRST.txt (this file)
+* a01-READ-ME
+* a02-sort-n-prepare
+* a03-command-lines-demo
+* a04-does-it-exist
+* a05-finding-EXIST
+* a06-loop
+* a07-tester
+* a08-append-a-file
+* a09-add-numbers
+* a10-mysha1
+* a11-banding
+* a12-fixfs
+
+=======================================================
+
+Use "bash" to run each script. Eg.
+   bash a01-READ-ME
+   bash a02-sort-n-prepare
+   bash a03-command-lines-demo 11 22 33 44 55
+
+===================================
+REV02: Mon Feb 26 20:34:01 WIB 2018
+START: Tue Feb 20 09:12:43 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

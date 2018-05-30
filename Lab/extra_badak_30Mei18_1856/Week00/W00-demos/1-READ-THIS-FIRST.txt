@@ -1,0 +1,40 @@
+exit 1
+This demo is available in badak:///extra/.
+See also: https://github.com/UI-FASILKOM-OS/os181.
+You should copy this folder to your own working folder.
+DO NOT work inside this folder!
+=======================================================
+
+Folder Name:
+Week00/
+
+To copy the folder to your home directory:
+cp -r /extra/Week00/W00-demos/ W00-demos/
+=======================================================
+
+File Listing:
+* 1-READ-THIS-FIRST.txt (this file)
+
+* c-program-example.c (a c program)
+  To compile:
+  $ gcc -o c-program-example c-program-example.c
+  To execute:
+  $ ./c-program-example
+
+* Makefile (a Makefile)
+  Just run:
+  $ make
+
+* QR-Code.docx and QR-Code.pdf
+  A MEMO example.
+
+===================================
+REV02: Mon Feb 26 20:33:37 WIB 2018
+START: Tue Feb 20 09:12:43 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

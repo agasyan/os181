@@ -1,0 +1,38 @@
+exit 1
+This demo is available in badak:///extra/.
+See also: https://github.com/UI-FASILKOM-OS/os181.
+You should copy this folder to your own working folder.
+DO NOT work inside the /extra folder!
+=======================================================
+
+Folder Name:
+Week02/
+
+To copy the folder to your home directory:
+cp -r /extra/Week02/W02-demos/ W02-demos/
+=======================================================
+
+File Listing:
+* 1-READ-THIS-FIRST.txt (this file)
+
+* c-language/
+  c-language files
+
+* permissions/
+  Permission mode demo
+
+
+=======================================================
+To list files, run:  ls -al
+To compile the “.c” files, run make
+
+===================================
+REV03: Mon Feb 26 20:34:47 WIB 2018
+START: Tue Feb 20 09:12:43 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

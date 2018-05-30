@@ -1,0 +1,36 @@
+exit 1
+This demo is available in badak:///extra/.
+See also: https://github.com/UI-FASILKOM-OS/os181.
+You should copy this folder to your own working folder.
+DO NOT work inside the /extra folder!
+=======================================================
+
+Folder Name:
+Week08/
+
+To copy the folder to your home directory:
+cp -r /extra/Week08/W08-demos/ W08-demos/
+=======================================================
+
+File Listing:
+* 1-READ-THIS-FIRST.txt (this file)
+* Makefile (a make file)
+* C files:
+20-parent.c 21-child.c 22-hello-goodbye.c 
+23-producer-consumer.c
+
+ALL:
+To make sure you understand Concurency and Synchronization;
+you should repeat Week06 and Week07!  Do not forget to update
+your "README.md" file!
+
+===================================
+REV02: Mon Apr 23 13:16:20 WIB 2018
+START: Wed Apr 18 09:49:51 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

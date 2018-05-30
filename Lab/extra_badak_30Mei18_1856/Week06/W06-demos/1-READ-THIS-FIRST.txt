@@ -1,0 +1,37 @@
+exit 1
+This demo is available in badak:///extra/.
+See also: https://github.com/UI-FASILKOM-OS/os181.
+You should copy this folder to your own working folder.
+DO NOT work inside the /extra folder!
+=======================================================
+
+Folder Name:
+Week06/
+
+To copy the folder to your home directory:
+cp -r /extra/Week06/W06-demos/ W06-demos/
+=======================================================
+
+File Listing:
+* 1-READ-THIS-FIRST.txt (this file)
+* Makefile (a make file)
+* C files:
+	00-show-pid.c, 01-fork.c, 02-fork.c, 03-fork.c
+	04-sleep.c, 05-fork.c, 06-fork.c, 07-fork.c
+	08-fork.c, 09-fork.c, 10-fork.c, 11-fork.c
+	12-fork.c, 14-fork.c, 15-fork.c
+
+=======================================================
+To list files, run:  ls -al
+To compile the “.c” files, run make
+
+===================================
+REV00: Wed Apr  4 09:51:41 WIB 2018
+START: Wed Apr  4 09:51:41 WIB 2018
+
+# Copyright (C) 2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This free document is distributed in the hope that it will be 
+# useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
